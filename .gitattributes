@@ -1,4 +1,4 @@
 special-vendored-path/* linguist-vendored
 *.css linguist-detectable=false
-*.js linguist-detectable=true
+*.js linguist-detectable=flase
 *.js linguist-vendored=false
