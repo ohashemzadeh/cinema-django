@@ -1,0 +1,46 @@
+{% extends 'ticketing/_base_page.html' %}
+{% load static %}
+{% block title %} لیست فیلم ها {% endblock %}
+{% block main_content %}
+
+    {% include 'ticketing/_ads.html' with adswebsite='اسنپ' %}
+
+    <!-- <div class="container" id="container"> -->
+    <h1>
+        سامانه فروش بلیط سینما
+    </h1>
+
+    <h2>
+        لیست فیلم های در حال اکران
+        <br>
+        {#    <a href="/ticketing/cinema/list"> فهرست سینماها </a>#}
+        <a href="{% url "ticketing:cinema_list" %}"> فهرست سینماها </a>
+    </h2>
+
+    {% if movie_list %}
+        <p style="color: green;">
+            تعداد
+            {{ movie_count }}
+            فیلم قابل نمایش وجود دارد
+        <ul>
+            {% for movie in movie_list %}
+                <li>
+                    {#          <a href="/ticketing/movie/details/{{ movie.id }}" >#}
+                    <a href="{% url 'ticketing:movie_details'  movie_id=movie.id %}">
+                        {{ movie }} <span style="color: grey">( {{ movie.director }}  ) </span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        </p>
+    {% else %}
+        <p style="color: red;">
+            متاستفانه هیچ فیلمی یافت نشد
+        </p>
+    {% endif %}
+    <!-- </div> -->
+
+    {% include 'ticketing/_ads.html' with adswebsite='دیجی کالا' %}
+
+
+{% endblock %}

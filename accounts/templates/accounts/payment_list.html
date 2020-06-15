@@ -1,0 +1,35 @@
+{% extends 'ticketing/_base_page.html' %}
+
+{% block title %} پرداخت ها {% endblock %}
+
+{% block main_content %}
+
+  {#  <a href="{% url 'ticketing:ticket_create'%}"> پرداخت جدید </a>#}
+
+  {% if payments %}
+    <div class="container">
+      <div class="alert alert-info">
+        فهرست تراکنش های شما
+      </div>
+    <a href="{% url 'accounts:payment_create' %}" class="btn btn-success">+ پرداخت جدید</a>
+      <div class="row">
+        {% for payment in payments %}
+          <div class="col-2 border border-dark">
+            مبلغ :
+            {{ payment.amount }}
+          </div>
+          <div class="col-5 border border-dark">
+            تاریخ تراکنش :
+            {{ payment.transaction_time }}
+          </div>
+          <div class="col-5 border border-dark">
+            رسید تراکنش:
+            {{ payment.transaction_code }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <p>در حال حاضر پرداختی برای شما وجود ندارد.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+/* === accounts app styles === */
+/* login page */
+.login-form {
+    width: 60%;
+    margin: 30px auto;
+}
+
+
+.profile-image {
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+.btn-xs {
+    font-size: 0.6em;
+}
+
+.profile-buttons .btn {
+    font-size: 0.7em;
+}
+
+/* profile edit page styles */
+.profile-items input,
+.profile-items select {
+    line-height: 0.9em;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.profile-items textarea {
+    margin-top: 5px;
+    height: 50px;
+    width: 100%;
+}
+
+.profile-items .item-text-box {
+    min-height: 70px;
+}

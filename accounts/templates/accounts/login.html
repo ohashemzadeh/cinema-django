@@ -1,0 +1,27 @@
+{% extends 'accounts/base_accounts.html' %}
+
+{% block title %} ورود کاربران  {% endblock %}
+
+{% block toolbar_title %}
+  <i class="fas fa-user"></i>
+  ورود کاربران
+{% endblock %}
+
+
+{% block main_content %}
+
+
+  <form action="" method="post" class="login-form">
+    {% csrf_token %}
+    {% if error %}
+      {{ error }}
+    {% endif %}
+    نام کاربری
+    <input type="text" name="username" value="{{ username }}" />
+    پسورد
+    <input type="password" name="password" value="" />
+    <button type="submit"> ورود  </button>
+
+  </form>
+
+{% endblock %}

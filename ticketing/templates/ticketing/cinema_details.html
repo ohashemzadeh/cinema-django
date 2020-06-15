@@ -1,0 +1,74 @@
+{%  extends 'ticketing/_base_page.html' %}
+{% load static %}
+
+{% block title %}
+  {{ cinema.name }}
+{% endblock %}
+
+{% block main_content %}
+</head>
+<body>
+      <div class="row py-3">
+        <div class="col-8 item-details">
+            <div class="row px-3">
+                <div class="col-3">
+                    <small class="text-muted">
+                        شهر:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {% if cinema.city %}
+                        {{ cinema.city }}
+                    {% else %}
+                        <small class="text-muted">(نامشخص)</small>
+                    {% endif %}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        ظرفیت:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ cinema.capacity }}
+                    نفر
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        تلفن:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ cinema.phone|default:"-" }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        آدرس:
+                    </small>
+                </div>
+                <div class="col-9 item-text-box">
+                    {{ cinema.address }}
+                </div>
+            </div>
+        </div>
+        <div class="col-4 text-center">
+            {% if cinema.image %}
+                <img class="item-image" src="{{ cinema.image.url }}" alt="{{ cinema.name }}">
+            {% else %}
+                <i class="far fa-10x fa-building text-muted"></i>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{#<script src="/static/ticketing/js/main.js"></script>#}
+  <script src=" {% static "ticketing/js/jquery-3.4.0.min.js" %}"></script>
+  <script src=" {% static "ticketing/js/bootstrap.bundle.js" %}"></script>
+  <script src=" {% static "ticketing/js/font-awesome.js" %}"></script>
+  <script src=" {% static "ticketing/js/main.js" %}"></script>
+
+</body>
+</html>

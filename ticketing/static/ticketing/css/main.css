@@ -1,0 +1,146 @@
+@font-face {
+    font-family: IRANSansWeb;
+    src: url(../webfonts/IRANSansWebFaNum.ttf);
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: IRANSansWeb;
+    font-size: 14px !important;
+    margin: 0;
+    background-color: #e6e6e6;
+}
+
+#container {
+    max-width: 720px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+#header {
+    background-color: #860002;
+    color: #ffffff;
+    height: 100px;
+}
+
+#header > h2 {
+    font-size: 2em;
+    margin: 0;
+}
+
+#toolbar {
+    background-color: #393939;
+    color: #ffffff;
+    min-height: 30px;
+}
+
+#toolbar h4 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+#toolbar .btn {
+    font-size: 0.7em;
+}
+
+#toolbar div.dropdown {
+    display: inline-block;
+}
+
+#toolbar .dropdown-item,
+#toolbar .dropdown-item-text {
+    font-size: 0.7em;
+}
+
+#footer {
+    background-color: #860002;
+    color: #ffffff;
+    height: 100px;
+}
+
+a.social-media-icon {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+ul.item-list {
+    padding: 0 20px;
+}
+
+ul.item-list > li {
+    list-style: none;
+    padding: 5px 20px;
+    background-color: #ffefdb;
+}
+
+ul.item-list > li:nth-child(2n) {
+    background-color: #e6e6e6;
+}
+
+ul.item-list > li:hover {
+    background-color: #c3c3c3;
+}
+
+ul.item-list > li > a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* item details page styles */
+.item-details > div.row > div {
+    line-height: 2em;
+    background-color: #e6e6e6;
+}
+
+.item-text-box {
+    font-size: 0.8em;
+    min-height: 100px;
+    background-color: #e6e6e6;
+    text-align: justify;
+}
+
+.item-image {
+    width: 150px;
+    min-height: 200px;
+    border: solid 1px #393939;
+}
+
+/* showtime list page styles */
+.showtime-box {
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.showtime-box .showtime-status {
+    font-size: 0.8em;
+    font-weight: normal;
+}
+
+.search-bar {
+    background-color: #efefef;
+    border-radius: 10px;
+    font-size: 0.8em;
+}
+
+.search-bar p{
+    margin: 0 20px;
+}
+
+.search-bar .errorlist {
+    color: #dd0002;
+    padding-right: 0;
+    text-indent: 10px;
+    font-size: 0.8em;
+}
+
+/* showtime details page styles */
+.btn-xs {
+    font-size: 0.6em;
+}
+
+/* ticket list page styles */
+.ticket-box {
+    font-size: 0.7em;
+}

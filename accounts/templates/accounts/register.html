@@ -1,0 +1,72 @@
+{% extends 'accounts/base_accounts.html' %}
+
+{% block title %} ثبت نام کاربر جدید {% endblock %}
+
+{% block main_content %}
+  <br>
+  ثبت نام کاربر جدید
+
+  {#Alerts#}
+  {% include 'accounts/_alerts.html' %}
+
+
+  <form method="post" action="" type="" enctype="multipart/form-data">
+    {% csrf_token %}
+    نام کوچک
+    <input type="text" name="first_name" value="{{ username }}" /><br>
+    نام خانوادگی
+    <input type="text" name="last_name" /><br>
+    نام کاربری*
+    <input type="text" name="username" required /><br>
+    *پست الکترونیک
+    <input type="email" name="email" required /><br>
+    پسورد*
+    <input type="password" name="password"  required /><br>
+    *تکرار پسورد
+    <input type="password" name="password2" required /><br>
+    <button type="submit"> ثبت نام  </button>
+  </form>
+
+
+
+    <!-- The Modal -->
+  <!-- قوانین و مقررات سایت -->
+  <div class="container">
+
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+    مشاهده قوانین و مقررات سایت
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">قوانین وب سایت</h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h3>قوانین وب سایت</h3>
+          <p>
+            قوانین و مقررات وب سایت به شرح زیر است :
+          </p>
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

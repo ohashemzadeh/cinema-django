@@ -1,0 +1,34 @@
+{% extends 'ticketing/_base_page.html' %}
+{% load static %}
+{% block title %} فهرست سینماها {% endblock %}
+
+{% block main_content %}
+
+    <h1>سامانه فروش بلیط سینما</h1>
+
+    <h2>
+        <a href={% url "ticketing:movie_list" %}> فهرست فیلم ها</a>
+    </h2>
+
+    {% if cinema_list %}
+        <p style="color: green;">
+            تعداد
+            {{ cinema_count }}
+            سینما وجود دارد
+        <ul>
+            {% for cinema in cinema_list %}
+                <li>
+                    <a href="{% url 'ticketing:cinema_details'  cinema_id=cinema.cinema_code %}">
+                        {{ cinema }}
+                    </a>
+                </li>
+            {% endfor %}
+        </p>
+    {% else %}
+        <p style="color: red;">
+            متاستفانه هیچ سینمایی یافت نشد
+        </p>
+
+    {% endif %}
+    {% include 'ticketing/_ads.html' with adswebsite='یاهو' %}
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'accounts/base_accounts.html' %}
+
+{% block main_content %}
+
+  <div class="row py-3">
+        <div class="col-8 item-details">
+            <div class="row px-3">
+                <div class="col-4">
+                    <small class="text-muted">
+                        <i class="far fa-user"></i>
+                        نام کاربری:
+                    </small>
+                </div>
+                <div class="col-8">
+                    {{ user.username }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-4">
+                    <small class="text-muted">
+                        <i class="far fa-address-card"></i>
+                        نام و نام خانوادگی:
+                    </small>
+                </div>
+                <div class="col-8">
+                    {{ profile.user.get_full_name }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-4">
+                    <small class="text-muted">
+                        <i class="fas fa-birthday-cake"></i>
+                        تاریخ تولد:
+                    </small>
+                </div>
+                <div class="col-8">
+                    {{ profile.birth_date|date:"Y/n/j" }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-4">
+                    <small class="text-muted">
+                        <i class="fas fa-mobile-alt"></i>
+                        تلفن همراه:
+                    </small>
+                </div>
+                <div class="col-8">
+                    {{ profile.mobile }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-4">
+                    <small class="text-muted">
+                        <i class="fas fa-coins"></i>
+                        اعتبار:
+                    </small>
+                </div>
+                <div class="col-4">
+                    {{ profile.get_balance_display }}
+                </div>
+                <div class="col-4 text-left">
+                    <a class="btn btn-xs btn-success my-1" href="#">
+                        <i class="fas fa-plus"></i>
+                        افزایش اعتبار
+                    </a>
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-2">
+                    <small class="text-muted">
+                        <i class="fas fa-home"></i>
+                        آدرس:
+                    </small>
+                </div>
+                <div class="col-10 item-text-box">
+                    {{ profile.address }}
+                </div>
+            </div>
+        </div>
+        <div class="col-4 text-center">
+        {% if profile.profile_image %}
+                <img class="profile-image" src="{{ profile.profile_image.url }}" alt="{{ profile }}">
+        {% endif %}
+            <div class="profile-buttons mt-4">
+                <a class="btn btn-secondary" href="{% url 'accounts:profile_edit' %}">
+                    <i class="fas fa-edit"></i>
+                    ویرایش نمایه
+                </a>
+                <a class="btn btn-warning" href="#">
+                    <i class="fas fa-key"></i>
+                    تغییر گذرواژه
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

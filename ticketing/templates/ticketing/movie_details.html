@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    {#  <link rel="stylesheet" type="text/css" href="/static/ticketing/css/main.css">#}
+  <link rel="stylesheet" type="text/css"  href=" {% static "ticketing/css/bootstrap.css" %}">
+  <link rel="stylesheet" type="text/css"  href=" {% static "ticketing/css/font-awesome.css" %}">
+  <link rel="stylesheet" type="text/css"  href=" {% static "ticketing/css/main.css" %}">
+</head>
+<body>
+
+   <div class="row py-3">
+        <div class="col-8 item-details">
+            <div class="row px-3">
+                <div class="col-3">
+                    <small class="text-muted">
+                        کارگردان:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ movie.director }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        محصول سال:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ movie.year }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        مدت زمان:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ movie.length }}
+                    دقیقه
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        داستان فیلم:
+                    </small>
+                </div>
+                <div class="col-9 item-text-box">
+                    {{ movie.description }}
+                </div>
+            </div>
+        </div>
+        <div class="col-4 text-center">
+            <img class="item-image" src="{{ movie.poster.url }}" alt="{{ movie.name }}">
+        </div>
+    </div>
+
+{#<script src="/static/ticketing/js/main.js"></script>#}
+  <script src=" {% static "ticketing/js/jquery-3.4.0.min.js" %}"></script>
+  <script src=" {% static "ticketing/js/bootstrap.bundle.js" %}"></script>
+  <script src=" {% static "ticketing/js/font-awesome.js" %}"></script>
+  <script src=" {% static "ticketing/js/main.js" %}"></script>
+
+</body>
+</html>

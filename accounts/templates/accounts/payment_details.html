@@ -1,0 +1,31 @@
+{% extends 'ticketing/_base_page.html' %}
+
+{% block title %} پرداخت {% endblock %}
+
+{% block main_content %}
+
+  {#  <a href="{% url 'ticketing:ticket_create'%}"> پرداخت جدید </a>#}
+  {% if payment %}
+    <div class="container">
+      <div class="alert alert-warning">
+        جزئیات تراکنش
+      </div>
+      <div class="row">
+        <div class="col-2 border border-dark">
+          مبلغ :
+          {{ payment.amount }}
+        </div>
+        <div class="col-5 border border-dark">
+          تاریخ تراکنش :
+          {{ payment.transaction_time }}
+        </div>
+        <div class="col-5 border border-dark">
+          رسید تراکنش:
+          {{ payment.transaction_code }}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p>پرداختی با مشخصات اعلام شده یافت نشد.</p>
+  {% endif %}
+{% endblock %}

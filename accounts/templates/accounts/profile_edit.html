@@ -1,0 +1,38 @@
+{% extends 'ticketing/_base_page.html' %}
+
+{% block title %} ویرایش پروفایل {% endblock %}
+
+{% block main_content %}
+  <div class="alert alert-warning"> ویرایش پروفایل </div>
+  <div class="container">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+      <!--Profile form-->
+        {% for field in profile_form %}
+          <div class="col-2"> {{ field.label }} </div>
+          <div class="col-5"> {{ field }} </div>
+          <div class="col-4"> {{field.errors}} </div>
+        {% endfor %}
+
+      <!--User form-->
+        {% for field in user_form %}
+          <div class="col-2"> {{ field.label }} </div>
+          <div class="col-5"> {{ field }} </div>
+          <div class="col-4"> {{field.errors}} </div>
+        {% endfor %}
+
+      </div>
+
+      {#        {{ form.as_p }}#}
+      <button type="submit" class="btn btn-primary btn-block btn-sm"> ثبت </button>
+    </form>
+  </div>
+
+  {% if form.non_field_errors %}
+    <div class="container">
+      <div class="alert alert-warning"> {{ form.non_field_errors }} </div>
+    </div>
+  {% endif %}
+
+{% endblock %}

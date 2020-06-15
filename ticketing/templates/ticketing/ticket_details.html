@@ -1,0 +1,48 @@
+{% extends 'ticketing/_base_page.html' %}
+{% load static %}
+{% block title %} لیست بلیت ها {% endblock %}
+
+
+{% block main_content %}
+
+  {% if ticket %}
+    <div class="container border border-info">
+      <div class="bg-secondary text-light border border-dark"> مشاهده بلیط خریداری شده</div>
+      <div class="text-dark font-weight-bolder">
+
+        <span>{{ ticket.showtime }}</span>
+        <br/>
+
+        خریدار
+        <span>{{ ticket.customer }}</span>
+        <br/>
+        نام فیلم
+        <span>{{ ticket.showtime.movie }}</span>
+        <br/>
+        نام سینما
+        <span>{{ ticket.showtime.cinema }}</span>
+        <br/>
+        زمان شروع سانس
+        <span>{{ ticket.showtime.start_time }}</span>
+        <br/>
+        تعداد صندلی
+        <span>{{ ticket.seat_count }}</span>
+        <br/>
+        <span>{{ ticket.order_time|date:"l n/j ساعت H:i" }}</span>
+
+        <br> داستان فیلم==>
+        <span>{{ ticket.showtime.movie.description }}</span>
+
+      </div>
+    </div>
+
+  {% else %}
+    <div class="alert alert-danger">
+      بلیت مورد نظر یافت نشد.
+    </div>
+
+
+  {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'ticketing/_base_page.html' %}
+{% load static %}
+{% block title %} لیست بلیت ها {% endblock %}
+
+
+{% block main_content %}
+
+  <div class="row">
+    <div class="col py-3">
+      {% if tickets %}
+        <div class="row px-2">
+          <div class="col">
+            <div class="alert alert-info mt-2 mb-0 py-1 px-3">
+              مجموعا تعداد
+              {{ tickets.count }}
+              بلیت یافت شد.
+            </div>
+          </div>
+        </div>
+        <div class="row px-2">
+        {% for ticket in tickets %}
+          <div class="col-3 px-2 py-2">
+            <span class="badge badge-pill badge-info">بلیط</span>
+            <a href="{% url "ticketing:ticket_details" ticket_id=ticket.id %}"
+               class="showtime-box btn border-dark">
+
+              <span>{{ ticket.showtime }}</span>
+              <br/>
+              <span>{{ ticket.seat_count }}</span>
+              <br/>
+              <span>{{ ticket.order_time|date:"l n/j ساعت H:i" }}</span>
+
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="alert alert-danger">
+          شما تاکنون بلیتی تهیه نکرده اید.
+        </div>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% include 'ticketing/_ads.html' with adswebsite='اسنپ' %}
+
+{% endblock %}

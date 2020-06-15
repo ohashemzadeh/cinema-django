@@ -1,0 +1,13 @@
+{% extends 'ticketing/_base_page.html' %}
+{% load static %}
+
+
+{%  block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static "accounts/css/accounts.css" %}">
+{% endblock %}
+
+{% block title %}ورود کاربران{% endblock %}
+
+{% block toolbar_title %}
+  <i class="fas fa-user"></i>
+{% endblock %}

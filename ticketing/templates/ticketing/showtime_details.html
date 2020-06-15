@@ -1,0 +1,130 @@
+{% extends "ticketing/_base_page.html" %}
+{% load static %}
+
+{% block title %}
+    خرید بلیت
+    {{ showtime.movie.name }}
+{% endblock %}
+
+{% block toolbar_title %}
+    <i class="fas fa-play-circle"></i>
+    {{ showtime.movie.name }}
+    <span class="small">
+        ({{ showtime.start_time|date:"l ساعت H:i" }})
+    </span>
+{% endblock %}
+
+{% block toolbar_buttons %}
+    <a class="btn btn-warning py-1 px-2" href="{% url "ticketing:showtime_list" %}">
+        <i class="fas fa-list"></i>
+        فهرست سانس‌ها
+    </a>
+{% endblock %}
+
+{% block main_content %}
+    <div class="row py-3">
+        <div class="col-8 item-details">
+            <div class="row px-3">
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="fas fa-film"></i>
+                        نام فیلم:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ showtime.movie.name }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="fas fa-building"></i>
+                        نام سینما:
+                    </small>
+                </div>
+                <div class="col-6">
+                    {{ showtime.cinema.name }}
+                </div>
+                <div class="col-3 text-left">
+                    {% if showtime.status == showtime.SALE_OPEN %}
+                        <span class="badge
+                            {% if showtime.free_seats < 10 %}
+                                badge-danger
+                            {% else %}
+                                badge-info
+                            {% endif %}">
+                        {{ showtime.free_seats }}
+                        صندلی مانده
+                        </span>
+                    {% else %}
+                        <span class="badge badge-dark">
+                            {{ showtime.get_status_display }}
+                        <span>
+                    {% endif %}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="far fa-clock"></i>
+                        شروع سانس:
+                    </small>
+                </div>
+                <div class="col-9">
+                    {{ showtime.start_time|date:"l Y/n/j ساعت H:i" }}
+                </div>
+                <div class="w-100 my-1"></div>
+                <div class="col-3">
+                    <small class="text-muted">
+                        <i class="fas fa-map-marker-alt"></i>
+                        آدرس سینما:
+                    </small>
+                </div>
+                <div class="col-9 item-text-box">
+                    {{ showtime.cinema.address }}
+                </div>
+                {% if showtime.status == showtime.SALE_OPEN %}
+                    <div class="w-100 my-1"></div>
+                    <div class="col-3">
+                        <small class="text-muted">
+                            <i class="fas fa-money-bill-wave"></i>
+                            قیمت بلیت:
+                        </small>
+                    </div>
+                    <div class="col-4">
+                        {{ showtime.price }}
+                        تومان
+                    </div>
+                    <div class="col-5">
+                    <form action="" method="post" class="form-inline">
+                        {% csrf_token %}
+                        <select name="seat_count" class="form-control form-control-sm ml-2">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <button type="submit" class="btn btn-xs btn-success my-1" href="#">
+                            خرید بلیت
+                        </button>
+                    </form>
+                    </div>
+                {% endif %}
+                {% if error %}
+                    <div class="w-100 my-1"></div>
+                    <span class="col-12 alert alert-danger align-items-baseline small p-2">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {{ error }}
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-4 text-center">
+            <img class="item-image" src="{{ showtime.movie.poster.url }}" alt="{{ showtime.movie.name }}">
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    {#  <link rel="stylesheet" type="text/css" href="/static/ticketing/css/main.css">#}
+    <link rel="stylesheet" type="text/css" href=" {% static "ticketing/css/bootstrap.css" %}">
+    <link rel="stylesheet" type="text/css" href=" {% static "ticketing/css/font-awesome.css" %}">
+    <link rel="stylesheet" type="text/css" href=" {% static "ticketing/css/main.css" %}">
+    {% block extra_css %} {% endblock %}
+    <title> {% block title %} وب سایت سینما {% endblock %}</title>
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">سامانه فروش بلیط سینما</a>
+        </div>
+
+        <div class="row align-items-center" id="toolbar">
+            <div class="col-4">
+                <h4>
+                    {% block toolbar_title %}{% endblock %}
+                </h4>
+            </div>
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">صفحه اصلی</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ticketing:movie_list' %}">فهرست فیلمها</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ticketing:cinema_list' %}">فهرست سینماها</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ticketing:showtime_list' %}">فهرست سانس ها</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        منو
+                    </a>
+                    <div class="dropdown-menu">
+                        {% block toolbar_buttons %}
+                            <a class="dropdown-item" href="{% url 'ticketing:movie_list' %}">فهرست فیلمها</a>
+                            <a class="dropdown-item" href="{% url 'ticketing:cinema_list' %}">فهرست سینماها</a>
+                            <a class="dropdown-item" href="{% url 'ticketing:showtime_list' %}">فهرست سانس ها</a>
+                        {% endblock %}
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+</nav>
+
+
+
+{% if user.is_authenticated %}
+    کاربر گرامی
+    {{ user }} -
+    {{ user.get_full_name }} //
+    خوش آمدید
+    <a href="{% url 'accounts:profile_details' %}"> مشاهده جزئیات پروفایل </a> ///
+    <a href=" {% url 'accounts:logout' %}"> خروج از حساب کاربری </a>
+{% else %}
+    <a href=" {% url 'accounts:login' %}"> ورود به حساب کاربری </a>
+{% endif %}
+
+
+<div class="container-fluid">
+{% block main_content %} {% endblock %}
+</div>
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="item-image" style="width:50%"
+                 src="{% static "ticketing/staticimages/saloons/CinemaSaloon (1).jpg" %}" alt="تصویر">
+        </div>
+        <div class="carousel-item">
+            <img class="item-image" style="width:50%"
+                 src="{% static "ticketing/staticimages/saloons/CinemaSaloon (2).jpg" %}" alt="تصویر">
+        </div>
+        <div class="carousel-item">
+            <img class="item-image" style="width:50%"
+                 src="{% static "ticketing/staticimages/saloons/CinemaSaloon (3).jpg" %}" alt="تصویر">
+        </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+
+{#<br><div style="color: darkred; font-size: larger"  > طراحی و اجرا توسط امید هاشم زاده </div>#}
+
+<button data-toggle="collapse" data-target="#about_programmer">طراحی و اجرا توسط امید هاشم زاده</button>
+<div id="about_programmer" class="collapse">
+    برنامه نویس و طراح وب سایت
+</div>
+
+
+{#  Loading Javascript files #}
+<script src=" {% static "ticketing/js/jquery-3.4.0.min.js" %}"></script>
+<script src=" {% static "ticketing/js/bootstrap.bundle.js" %}"></script>
+<script src=" {% static "ticketing/js/font-awesome.js" %}"></script>
+<script src=" {% static "ticketing/js/main.js" %}"></script>
+
+
+</body>
+</html>
